@@ -1,23 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import MostrarNome from "./components/Nome";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  return ( // Aqui dentro vai o JSX ou TSX
+    <div>
+      <h1>Bem vindo ao meu primeiro App!</h1>
+      <MostrarNome nome="Leila Mônica" idade="28" />
+      <br />
+      <MostrarNome nome="Rafael" idade="30"/>
     </div>
   );
 }
