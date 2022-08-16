@@ -1,23 +1,20 @@
 import { useState } from "react";
 
 function App() {
-  const [usuario, setUsuario] = useState('');
-  const [idade, setIdade] = useState('');
-  const [email, setEmail] = useState('');
+  const [input, setInput] = useState('');
+  const [tatefas, setTarefas] = useState([
+    'Maria Eloah',
+    'Emylle',
+    'Henrique'
+  ]);
 
-  const [cliente, setCliente] = useState({});
 
   function handleRegister (e)
   {
     e.preventDefault();
 
-    setCliente({
-      nome: usuario,
-      email: email,
-      idade: idade,
-    })
-
-    alert('Cliente registrado com sucesso!')
+    setTarefas([...tatefas, input]);
+    setInput('');
   }
 
   return ( // Aqui dentro vai o JSX ou TSX
@@ -25,27 +22,11 @@ function App() {
       <h2>Cadastro de Usuário</h2>
 
       <form onSubmit={ handleRegister }>
-        <label>Nome</label> <br/>
+        <label>Nome da tarefa</label> <br/>
         <input 
-          placeholder="Digite seu nome" 
-          value={usuario}
-          onChange={ e => setUsuario(e.target.value)}
-        />
-        <br/><br/>
-
-        <label>Email</label> <br/>
-        <input 
-          placeholder="Digite seu email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-        />
-        <br/><br/>
-
-        <label>Idade</label> <br/>
-        <input 
-          placeholder="Digite sua idade"
-          value={idade}
-          onChange={e => setIdade(e.target.value)}
+          placeholder="Digite uma tarefa" 
+          value={input}
+          onChange={ e => setInput(e.target.value)}
         />
         <br/><br/>
 
@@ -54,11 +35,11 @@ function App() {
 
       <br/><br/>
 
-      <div>
-        <span>Bem vindo.: {cliente.nome}</span> <br/>
-        <span>Idade..........: {cliente.idade}</span> <br/>
-        <span>E-mail........: {cliente.email}</span> <br/>
-      </div>
+      <ul>
+        {tatefas.map( tarefa => (
+          <li key={tarefa}>{tarefa}</li>
+        ))}
+      </ul>
     </div>
   );
 }
