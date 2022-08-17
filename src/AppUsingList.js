@@ -1,31 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function App() {
   const [input, setInput] = useState('');
-  const [tarefas, setTarefas] = useState([
+  const [tatefas, setTarefas] = useState([
     'Maria Eloah',
     'Emylle',
     'Henrique'
   ]);
 
-  useEffect(() => { //Executa sempre que a pagina é atualizada
-    const tarefasStorage = localStorage.getItem('@tarefas');
-
-    if (tarefasStorage)
-    {
-      setTarefas(JSON.parse(tarefasStorage));
-    }
-  }, [])
-
-  useEffect(() => { //Executa sempre que a pagina é atualizada
-    localStorage.setItem('@tarefas', JSON.stringify(tarefas));
-  }, [tarefas]);
 
   function handleRegister (e)
   {
     e.preventDefault();
 
-    setTarefas([...tarefas, input]);
+    setTarefas([...tatefas, input]);
     setInput('');
   }
 
@@ -48,7 +36,7 @@ function App() {
       <br/><br/>
 
       <ul>
-        {tarefas.map( tarefa => (
+        {tatefas.map( tarefa => (
           <li key={tarefa}>{tarefa}</li>
         ))}
       </ul>
